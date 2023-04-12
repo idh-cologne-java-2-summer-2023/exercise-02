@@ -15,10 +15,19 @@ public class ATM {
 
 	double Kontostand = 100;
 
+	public void Kontonummer() {
+		int number = 0;
+
+	}
+
+	Kontonummer kontonummer = new Kontonummer();
+
 	public void run() {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
 			try {
+				System.out.print("Enter your bank ID: ");
+
 				System.out.print("Enter the amount to withdraw: ");
 				double amount = Double.parseDouble(br.readLine()); // das gleiche nur mit double, um Kommazahlen
 																	// darzustellen
