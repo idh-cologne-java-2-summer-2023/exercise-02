@@ -2,7 +2,7 @@ package idh.java;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-
+/** some changes */ 
 public class ATM {
 	int accountBalance = 100;
 
