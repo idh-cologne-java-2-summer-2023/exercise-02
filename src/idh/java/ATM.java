@@ -4,7 +4,10 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class ATM {
-	int accountBalance = 100;
+	Account onehoundredtwentythree = new Account(123, 200);
+	Account twohoundredthirtyfour = new Account(234, 100);
+	Account threehoundredfourtyfive = new Account(345, 50);
+	Account[] accounts = { onehoundredtwentythree, twohoundredthirtyfour, threehoundredfourtyfive };
 
 	/**
 	 * Main command loop of the ATM Asks the user to enter a number, and passes this
@@ -16,24 +19,21 @@ public class ATM {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
 			try {
-				System.out.print("Enter the amount to withdraw: ");
-				int amount = Integer.parseInt(br.readLine());
-				cashout(amount);
+				System.out.print("Enter your account number: ");
+				int accountNumber = Integer.parseInt(br.readLine());
+				for (int i = 0 ; i < accounts.length; i++) {
+					if (accountNumber == accounts[i].getAccountNumber()) {
+						System.out.print("Enter the amount to withdraw: ");
+						int amount = Integer.parseInt(br.readLine());
+						accounts[i].cashout(amount);
+					}
+				}
+				// cashout(amount);
 			} catch (Exception e) {
 				break;
 			}
 		}
 	}
-
-	public void cashout(int amount) {
-		if (amount < accountBalance) {
-			accountBalance = accountBalance - amount;
-			System.out.println("Ok, here is your money, enjoy!");
-		} else {
-			System.out.println("Sorry, not enough money in the bank.");
-		}
-
-	};
 
 	/**
 	 * Launches the ATM
