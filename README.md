@@ -28,8 +28,11 @@ Als Basiscode innerhalb des Projektes finden Sie die Referenzlösung aus Übung 
 Danach erweitern Sie die ATM-Klasse um zwei Aspekte:
 
 1. Der Automat sollte verschiedene Konten verwalten können. D.h. dass Benutzer:innen im Dialog zunächst ihre Kontonummer angeben müssen, und danach den Betrag. Der Geldautomat weiß dann für alle inviduellen Benutzer:innen, wie viel Geld diese noch auf dem Konto haben.
+//TODO: Objekt pro Kontonummer erstellen lassen
+-> wechseln zwischen Konten? "wenn Kontonummer1 eingegeben wurde, dann this.Kontonummer1"
 
 2. Der Automat verwaltet außerdem, wie viel Bargeld er noch zur Verfügung hat. D.h. auch wenn eine Benutzerin genug Geld auf dem Konto hat, kann es sein, dass sie das Geld nicht bekommt, weil der Automat leer ist. Wenn eine Auszahlung passiert ist, sollte der Automat seinen Bargeldbestand jeweils aktualisieren.
+//TODO: immer wenn Geld abgehoben wird, - von Geldbestand des Automaten. Wenn leer nichts mehr abheben
 
 Folgende Interaktionen sollten also passieren können:
 
