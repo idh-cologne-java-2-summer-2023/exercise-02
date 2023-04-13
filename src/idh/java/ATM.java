@@ -7,6 +7,7 @@ public class ATM {
 
 	String[] accountNumbers = { "123", "456", "789" }; // Beispiel-Kontonummern
 	int[] accountBalances = { 100, 200, 300 }; // Beispiel-Kontostände
+	int atmBalance = 400;
 
 	/**
 	 * Main command loop of the ATM Asks the user to enter a number, and passes this
@@ -47,16 +48,21 @@ public class ATM {
 
 	public void cashout(String accountNumber, int amount) {
 		int accountBalance = this.getAccountBalance(accountNumber);
-		if (accountBalance != -1 && amount <= accountBalance) {
+		if (accountBalance != -1 && amount <= accountBalance && amount <= this.atmBalance) {
 			for (int i = 0; i < this.accountNumbers.length; i++) {
 				if (this.accountNumbers[i].equals(accountNumber)) {
 					this.accountBalances[i] = accountBalance - amount;
+					this.atmBalance -= amount;
 					System.out.println("Ok, here you go!");
 					break;
 				}
 			}
 		} else {
-			System.out.println("Sorry, you don't have enough money in the bank.");
+			if (amount > this.atmBalance) {
+				System.out.println("Sorry, the ATM doesn't have that much cash anymore.");
+			} else {
+				System.out.println("Sorry, you don't have enough money in the bank.");
+			}
 		}
 	}
 
