@@ -57,7 +57,7 @@ public class ATM {
                     accountBalances[accountIndex] = accountBalance;
                     System.out.println("Ok, here you go!");
                 } else {
-                    System.out.println("Sorry, the ATM doesn't have that much cash anymore.");
+                    System.out.println("Sorry, the ATM doesn't have that much cash anymore. Try another day! ");
                 }
             } else {
                 System.out.println("Sorry, you don't have enough money in the bank.");
