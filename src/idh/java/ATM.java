@@ -20,7 +20,7 @@ public class ATM {
 	public void run() {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
-			try {
+			try {  // asks for both account number and amount of cash to withdraw
 				System.out.print("Please enter your account number: ");
 				int accNumber = Integer.parseInt(br.readLine());
 				System.out.println("Your Account Balance is : " + account[accNumber] + "€");
@@ -35,16 +35,16 @@ public class ATM {
 }
 
 	public void cashout(int amount, int accNumber) {
-		if (amount <= account[accNumber] && amount <= ATMCash) {
+		if (amount <= account[accNumber] && amount <= ATMCash) { //checks, if both the account and ATM have enough money
 			account[accNumber] = account[accNumber] - amount;
 			ATMCash = ATMCash - amount;
 			System.out.println("Ok, here is your money, enjoy!");
 			System.out.println("You have " + account[accNumber] + "€ left in your account.");
 		} 
-		else if(amount > account[accNumber]) {
+		else if(amount > account[accNumber]) {  //when the account doesn't have enough money
 			System.out.println("Sorry, not enough money in the bank.");
 		}
-		else if(amount > ATMCash) {
+		else if(amount > ATMCash) { //when the ATM doesn't have enough cash
 			System.out.println("Sorry, the ATM doesn't have that much cash anymore.");
 		}
 		 
@@ -55,7 +55,6 @@ public class ATM {
 	 * Launches the ATM
 	 */
 	public static void main(String[] args) {
-	    
 		for(int i = 0; i < account.length; i++) {
 			account[i] = (int)(Math.random()*5000) + 1;
 		}
