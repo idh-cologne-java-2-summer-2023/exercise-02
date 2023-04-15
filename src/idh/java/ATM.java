@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class ATM {
-	int moneyInATM = 100000;
+	int moneyInATM = 100000; //Es sind 100.000€ im Geldautomaten
 	int[] users;
 	int[] usersMoney;
 	int numberOfUsers;
@@ -39,7 +39,7 @@ public class ATM {
 		for(int i = 0; i < users.length; i++) {
 			if(users[i] == 0 && kontonummer != users[i]) {  
 				users[numberOfUsers] = kontonummer;
-				usersMoney[numberOfUsers] = 50000;
+				usersMoney[numberOfUsers] = 50000; //50.000€ pro User zur Verfügung
 				numberOfUsers++;
 				bruh = i;
 				break;
@@ -65,7 +65,6 @@ public class ATM {
 		else {
 			System.out.println("Sorry the ATM doesn't have that much cash anymore.");
 		}
-		bruh = 0; //Reset, damit die Zählervariable beim nächsten User-Login wieder funktioniert
 	};
 
 	/**
