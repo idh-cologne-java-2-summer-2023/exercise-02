@@ -6,8 +6,7 @@ import java.lang.Math;
 
 public class ATM {
 	
-	int accountBalance = 100;
-	int ATMCash = 10000;
+	int ATMCash = 100;
     static int[] account = new int[100];
     
 	/**
@@ -23,7 +22,7 @@ public class ATM {
 			try {  // asks for both account number and amount of cash to withdraw
 				System.out.print("Please enter your account number: ");
 				int accNumber = Integer.parseInt(br.readLine());
-				System.out.println("Your Account Balance is : " + account[accNumber] + "€");
+				System.out.println("Your Account Balance is: " + account[accNumber] + "€");
 				System.out.print("Please enter the amount to withdraw: ");
 				int amount = Integer.parseInt(br.readLine());
 				cashout(amount, accNumber);
@@ -42,10 +41,14 @@ public class ATM {
 			System.out.println("You have " + account[accNumber] + "€ left in your account.");
 		} 
 		else if(amount > account[accNumber]) {  //when the account doesn't have enough money
-			System.out.println("Sorry, not enough money in the bank.");
+			System.out.println("Sorry, there isn't enough money in your account.");
+		}
+		else if(ATMCash == 0) {
+			System.out.println("Sorry, the ATM is empty, try another time.");
 		}
 		else if(amount > ATMCash) { //when the ATM doesn't have enough cash
-			System.out.println("Sorry, the ATM doesn't have that much cash anymore.");
+			System.out.println("Sorry, the ATM doesn't have that much cash left.");
+			System.out.println("There are only " + ATMCash + "€ left in the ATM.");
 		}
 		 
 
