@@ -2,9 +2,20 @@ package idh.java;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ATM {
-	int accountBalance = 100;
+	private Map<Integer, Integer> accountBalances = new HashMap<>();
+	private int cashBalance = 1000;
+	
+	public ATM() {
+		accountBalances.put(1, 500);
+		accountBalances.put(2, 1000);
+		accountBalances.put(3,200);
+		
+	}
+	
 
 	/**
 	 * Main command loop of the ATM Asks the user to enter a number, and passes this
@@ -16,24 +27,40 @@ public class ATM {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
 			try {
+				System.out.println("Enter your account number: ");
+				int accountNumber = Integer.parseInt(br.readLine());
 				System.out.print("Enter the amount to withdraw: ");
 				int amount = Integer.parseInt(br.readLine());
-				cashout(amount);
+				cashout(accountNumber, amount);
 			} catch (Exception e) {
 				break;
 			}
 		}
 	}
 
-	public void cashout(int amount) {
-		if (amount < accountBalance) {
-			accountBalance = accountBalance - amount;
-			System.out.println("Ok, here is your money, enjoy!");
-		} else {
-			System.out.println("Sorry, not enough money in the bank.");
+	public void cashout(int accountNumber, int amount) {
+		if (!accountBalances.containsKey(accountNumber)) {
+			System.out.println("Unknown account number.");
+			return;
 		}
+		
+		int accountBalance = accountBalances.get(accountNumber);
+		
+		if (amount > accountBalance) {
+			System.out.println("Sorry, not enough money in the bank.");
+			return;
+		} 
+		
+		if (amount > cashBalance){
+			System.out.println("Sorry, the ATM doesn't have that much cash anymore.");
+			return;
+		}
+		
+		accountBalances.put(accountNumber, accountBalance - amount);
+		cashBalance -= amount;
+		System.out.println("Ok, here you go!");	
 
-	};
+	}
 
 	/**
 	 * Launches the ATM
