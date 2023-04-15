@@ -6,7 +6,7 @@ import java.lang.Math;
 
 public class ATM {
 	
-	int ATMCash = 100;
+	int ATMCash = 10000;
     static int[] account = new int[100];
     
 	/**
@@ -49,7 +49,7 @@ public class ATM {
 		else if(amount > ATMCash) { //when the ATM doesn't have enough cash
 			System.out.println("Sorry, the ATM doesn't have that much cash left.");
 			System.out.println("There are only " + ATMCash + "€ left in the ATM.");
-		}
+			}
 		 
 
 	};
