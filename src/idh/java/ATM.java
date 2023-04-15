@@ -1,3 +1,6 @@
+/* FrancyB7 */
+
+
 package idh.java;
 
 import java.io.BufferedReader;
