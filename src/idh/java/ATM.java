@@ -1,6 +1,7 @@
 package idh.java;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.Math;
 
@@ -49,11 +50,36 @@ public class ATM {
 		else if(amount > ATMCash) { //when the ATM doesn't have enough cash
 			System.out.println("Sorry, the ATM doesn't have that much cash left.");
 			System.out.println("There are only " + ATMCash + "€ left in the ATM.");
+			emptyATM(accNumber);
 			}
-		 
-
 	};
 
+	public void emptyATM(int accNumber) {
+		String answ = null;
+		BufferedReader b = new BufferedReader(new InputStreamReader(System.in));
+		System.out.print("Do you want to withdraw " + ATMCash + "€? y/n");
+		try {
+		 answ = b.readLine();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(answ.contains("y") == true) {
+			account[accNumber] = account[accNumber] - ATMCash;
+			ATMCash = 0;
+			System.out.println("Here is your money, enjoy.");
+		}
+		else if(answ.contains("n") == true) {
+			System.out.println("Ok, have a nice day.");
+		}
+		else {
+			System.out.println("Invalid answer, try again.");
+			emptyATM(accNumber);
+		}
+		
+	}
+	
+	
 	/**
 	 * Launches the ATM
 	 */
