@@ -3,8 +3,9 @@ package idh.java;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+
 public class ATM {
-	int accountBalance = 100;
+	int money = 1000;
 
 	/**
 	 * Main command loop of the ATM Asks the user to enter a number, and passes this
@@ -26,13 +27,12 @@ public class ATM {
 	}
 
 	public void cashout(int amount) {
-		if (amount < accountBalance) {
-			accountBalance = accountBalance - amount;
+		if (amount <= money) {
 			System.out.println("Ok, here is your money, enjoy!");
+			money -= amount;
 		} else {
-			System.out.println("Sorry, not enough money in the bank.");
+			System.out.println("Sorry, there is not enough money in the bank! Go get a job...");
 		}
-
 	};
 
 	/**
@@ -42,5 +42,4 @@ public class ATM {
 		ATM atm = new ATM();
 		atm.run();
 	};
-
-}
+};
