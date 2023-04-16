@@ -3,11 +3,9 @@ package idh.java;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-import b.ATM;
-
 public class ATM {
 	
-	int cash = 500;
+	int hardCash = 200;
 	
 	/**
 	 * Main command loop of the ATM
@@ -20,10 +18,16 @@ public class ATM {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		while(true) {
 			try {
-				System.out.print("Enter the amount to withdraw: ");
-				int amount = Integer.parseInt(br.readLine());
-				cashout(amount);
-			} catch (Exception e) {
+				
+				System.out.println("Please enter your BankID:");
+				int id = Integer.parseInt(br.readLine());
+				
+				if (id == User.getID()) {
+					System.out.print("Enter the amount to withdraw: ");
+					int amount = Integer.parseInt(br.readLine());
+					cashout(amount);
+				}
+			} catch (Exception e) { 
 				break;
 			}
 		}
@@ -31,16 +35,16 @@ public class ATM {
 	
 	public void cashout(int amount) {
 		
-		if (cash > amount) {
-			cash -= amount;
-			System.out.println("User specified amount is withdrawn. Enjoy. " + amount + "$.");
-			System.out.println("Your current cash amount is " + cash + "$.");
-		} else if (cash < amount) {
-			System.out.println("Sorry, you are too poor.");
-		} else if (cash == amount) {
-			cash -= amount;
-			System.out.println("User specified amount is withdrawn. Enjoy. " + amount + "$.");
-			System.out.println("Your current cash amount is " + cash + "$.");
+		
+		if (hardCash > amount) {
+			hardCash -= amount;
+			User.setCash(amount);
+			System.out.println("You have withdrawn " + amount + "$.");
+			System.out.println("Your Account balance is " + User.getCash() + "$.");
+		} else if (User.getCash() < amount) {
+			System.out.println("Error. Your Account balance is too low!");
+		} else if (hardCash < amount) {
+			System.out.println("Sorry, this Automat does have enough cash stored.");
 		}
 	}
 	
