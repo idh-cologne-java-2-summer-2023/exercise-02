@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 
 public class ATM {
 	int accountBalance = 100;
-
+	//test
 	/**
 	 * Main command loop of the ATM Asks the user to enter a number, and passes this
 	 * number to the function cashout(...) which actually does the calculation and
