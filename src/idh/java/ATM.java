@@ -68,7 +68,7 @@ public class ATM {
 			enoughCash = 2;
 		}
 		
-		//switch which decides what to do 1337
+		//switch which decides what to do
 		switch (enoughCash) {
 		case 0:
 			atmcash = atmcash - amount;
