@@ -1,46 +1,44 @@
 package idh.java;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.*;
 
 public class ATM {
-	int accountBalance = 100;
-
-	/**
-	 * Main command loop of the ATM Asks the user to enter a number, and passes this
-	 * number to the function cashout(...) which actually does the calculation and
-	 * produces money. If the user enters anything else than an integer number, the
-	 * loop breaks and the program exists
-	 */
+	
+	private static int cashBalance = 1000; // initial cash balance
+	private int accountBalance = 500; // initial user balance
+	private String accountNumber; // account number for the user
+	
 	public void run() {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		while (true) {
+		while(true) {
 			try {
+				System.out.print("Enter your account number: ");
+				accountNumber = br.readLine();
 				System.out.print("Enter the amount to withdraw: ");
-				int amount = Integer.parseInt(br.readLine());
-				cashout(amount);
-			} catch (Exception e) {
-				break;
+				String input = br.readLine();
+				if (input.equals("exit")) {
+					break;
+				}
+				int amount = Integer.parseInt(input);
+				if (amount > accountBalance) {
+					System.out.println("Sorry, you don't have enough money in your account.");
+				} else if (amount > cashBalance) {
+					System.out.println("Sorry, the ATM is out of cash.");
+				} else {
+					accountBalance -= amount;
+					cashBalance -= amount;
+					System.out.println("Ok, here is your money, spend it wisely!");
+				}
+			} catch (NumberFormatException e) {
+				System.out.println("Invalid input, please enter a number.");
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
 		}
 	}
-
-	public void cashout(int amount) {
-		if (amount < accountBalance) {
-			accountBalance = accountBalance - amount;
-			System.out.println("Ok, here is your money, enjoy!");
-		} else {
-			System.out.println("Sorry, not enough money in the bank.");
-		}
-
-	};
-
-	/**
-	 * Launches the ATM
-	 */
+	
+	
 	public static void main(String[] args) {
 		ATM atm = new ATM();
 		atm.run();
 	};
-
-}
+};
