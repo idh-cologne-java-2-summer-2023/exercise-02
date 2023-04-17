@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.lang.reflect.Array;
 
-public class ATM{
+public class ATM  {
 	int atmblc = 230;
 	int[] arr = {2000, 100, 2432, 323423, 1};
 	
