@@ -30,6 +30,13 @@ public class ATM {
 			} catch (Exception e) {
 				break;
 			}
+			try {
+				System.out.print("Enter the amount to withdraw: ");
+				int broke = Integer.parseInt(br.readLine());
+				nomoney(broke);
+			} catch (Exception e) {
+				break;
+			}
 		}
 	}
 	public void checkin(int user) {
@@ -43,6 +50,12 @@ public class ATM {
 			System.out.println("Ok, here is your money, enjoy!");
 		} else {
 			System.out.println("Sorry, not enough money in the bank.");
+		}
+
+	}
+	public void nomoney(int broke) {
+		if (broke < accountBalance) {
+			System.out.println("Sorry, the ATM doesn't have that much cash anymore.");
 		}
 
 	};
