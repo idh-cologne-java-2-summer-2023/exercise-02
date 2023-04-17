@@ -9,9 +9,8 @@ public class ATM {
 		 
 
 	/**
-	 * Main command loop of the ATM Asks the user to enter a number, and passes this
-	 * number to the function cashout(...) which actually does the calculation and
-	 * produces money. If the user enters anything else than an integer number, the
+	 * Main command loop of the ATM Asks the user to enter an accountnumber and an amount, and passes this
+	 * number to the function checkNumber(...) If the user enters anything else than an integer number, the
 	 * loop breaks and the program exists
 	 */
 	public void run() {
@@ -29,7 +28,13 @@ public class ATM {
 			}
 		}
 	}
-	
+	/**
+	 * compares the entered accountnumber to the accountnumbers of the users-array
+	 * if accountnumber exists in the array the method passes the amount to a method of the class AtmUsers,
+	 * that checks if the asked amount is available on the specific account
+	 * @param accnb
+	 * @param amount
+	 */
 	public void checkNumber(int accnb, int amount) {
 		for (int i = 0; i < users.length; i++) {
 			if (users[i].accountnumber == accnb) {
@@ -38,6 +43,10 @@ public class ATM {
 		}
 	}
 	
+	/**
+	 * checks if the ATMbalance is higher than the asked amount
+	 * @param amount
+	 */
 	public void checkATMvolume(int amount) {
 		if (amount <= ATMbalance) {
 			ATMbalance = ATMbalance - amount;
