@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 
 public class ATM {
 	public static AtmUser[] users = new AtmUser[15];
+	public static int ATMbalance = 5000;
 		 
 
 	/**
@@ -35,6 +36,15 @@ public class ATM {
 				users[i].cashout(amount);
 			}
 		}
+	}
+	
+	public void checkATMvolume(int amount) {
+		if (amount <= ATMbalance) {
+			ATMbalance = ATMbalance - amount;
+			System.out.println("Ok, here is your money, enjoy!");
+		}
+		else
+			System.out.println("Sorry, the ATM doesn't have that much cash anymore.");
 	}
 	
 	

@@ -2,7 +2,7 @@ package idh.java;
 
 import java.util.Random;
 
-public class AtmUser {
+public class AtmUser extends ATM {
 	protected int accountnumber;
 	protected int accountBalance;
 	private static int counter = 0;
@@ -18,9 +18,9 @@ public class AtmUser {
 		
 		if (amount <= this.accountBalance) {
 			this.accountBalance = this.accountBalance - amount;
-			System.out.println("Ok, here is your money, enjoy!");
+			super.checkATMvolume(amount);
 		} else {
-			System.out.println("Sorry, not enough money in the bank.");
+			System.out.println("Sorry, you do not have enough money in the bank.");
 		}
 
 	}
