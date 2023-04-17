@@ -1,40 +1,52 @@
 package idh.java;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.*;
 
 public class ATM {
-	int accountBalance = 100;
-
+	float credits = 200f;
+	
 	/**
-	 * Main command loop of the ATM Asks the user to enter a number, and passes this
-	 * number to the function cashout(...) which actually does the calculation and
-	 * produces money. If the user enters anything else than an integer number, the
-	 * loop breaks and the program exists
+	 * Main command loop of the ATM
+	 * Asks the user to enter a number, and passes this number to the function cashout(...) 
+	 * which actually does the calculation and produces money.
+	 * If the user enters anything else than an integer number, the loop breaks 
+	 * and the program exists
 	 */
 	public void run() {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		while (true) {
+		
+		while(true) {
 			try {
 				System.out.print("Enter the amount to withdraw: ");
-				int amount = Integer.parseInt(br.readLine());
-				cashout(amount);
+				String line = br.readLine();
+					if (line.equals("exit")) {
+						System.out.println("Beenden!");
+						System.exit(0);
+					}
+					else if (line.matches("[+-]?([0-9]*[.])?[0-9]+" )) {
+						float amount = Float.parseFloat(line);
+						cashout(amount);
+				    }
+					else {
+						System.out.println("Bitte numerischen Betrag oder exit eingeben");
+					}
 			} catch (Exception e) {
 				break;
 			}
 		}
 	}
-
-	public void cashout(int amount) {
-		if (amount < accountBalance) {
-			accountBalance = accountBalance - amount;
-			System.out.println("Ok, here is your money, enjoy!");
-		} else {
-			System.out.println("Sorry, not enough money in the bank.");
-		}
-
-	};
-
+	
+	public void cashout(float amount) {
+		if (credits >= amount && amount > 0) {
+			credits = credits - amount;
+			System.out.println("Ausgabe von: " + amount + " credits. \nNeuer Kontostand: " + credits + " credits");
+		} 
+		else {
+			System.out.println("Unzureichende Credits/Eingabe eines Negativen Wertes");	
+	    }
+			
+	}
+	
 	/**
 	 * Launches the ATM
 	 */
@@ -42,5 +54,4 @@ public class ATM {
 		ATM atm = new ATM();
 		atm.run();
 	};
-
-}
+};
