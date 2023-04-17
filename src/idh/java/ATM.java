@@ -6,7 +6,7 @@ public class ATM {
 	private static int cashBalance = 1000; // initial cash balance
 	private int accountBalance = 500; // initial user balance
 	private String accountNumber; // account number for the user
-	
+	//sjsjjs
 	public void run() {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		while(true) {
