@@ -25,7 +25,7 @@ public class ATM {
 		}
 	}
 	
-	/** test*/ /** mn*/
+	/** test*/ /** ljjn*/
 
 	public void cashout(int amount) {
 		if (amount < accountBalance) {
