@@ -41,6 +41,9 @@ public class ATM {
 	public static void main(String[] args) {
 		ATM atm = new ATM();
 		atm.run();
+		
+		AtmUser[] users = new AtmUser[15];
+		
 	};
 
 }
