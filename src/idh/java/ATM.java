@@ -16,6 +16,14 @@ public class ATM {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
 			try {
+				System.out.print("Enter your account number: ");
+				int user = Integer.parseInt(br.readLine());
+				checkin(user);
+			} catch (Exception e) {
+				break;
+			}
+			
+			try {
 				System.out.print("Enter the amount to withdraw: ");
 				int amount = Integer.parseInt(br.readLine());
 				cashout(amount);
@@ -24,7 +32,11 @@ public class ATM {
 			}
 		}
 	}
+	public void checkin(int user) {
+		if (user == accountBalance) {
+		} 
 
+	}
 	public void cashout(int amount) {
 		if (amount < accountBalance) {
 			accountBalance = accountBalance - amount;
