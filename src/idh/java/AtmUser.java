@@ -8,9 +8,9 @@ public class AtmUser {
 	private static int counter = 0;
 	
 	public AtmUser() {
-		accountnumber = ++counter;
+		this.accountnumber = ++counter;
 		Random random = new Random();
-		accountBalance = random.nextInt(991) + 10;
+		this.accountBalance = random.nextInt(991) + 10;
 		
 	}
 	

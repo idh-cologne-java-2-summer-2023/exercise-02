@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 
 public class ATM {
 	public static AtmUser[] users = new AtmUser[15];
+		 
 
 	/**
 	 * Main command loop of the ATM Asks the user to enter a number, and passes this
@@ -41,8 +42,11 @@ public class ATM {
 	 * Launches the ATM
 	 */
 	public static void main(String[] args) {
+		for (int i = 0; i < users.length; i++)
+			users[i] = new AtmUser();
 		// for (int i = 0; i < users.length; i++)
-			System.out.println(users.length);
+		//	System.out.println(users[i].accountnumber);
+		
 		ATM atm = new ATM();
 		atm.run();
 		
