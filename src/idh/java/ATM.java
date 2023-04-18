@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class ATM {
-	int accountBalance = 100;
+	int atmBalance = 1000;
+	int accountCheck = 123;
+	int accountBalance = 2000;
 
 	/**
 	 * Main command loop of the ATM Asks the user to enter a number, and passes this
@@ -16,6 +18,15 @@ public class ATM {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
 			try {
+				//Abfrage der Kontonummer und Weitergabe der Kontonummer an die Funktion "accountCheck")
+				System.out.println("Enter your account number:");
+				int accountNumber = Integer.parseInt(br.readLine());
+				accountCheck(accountNumber);
+			} catch (Exception e) {
+				break;
+			}
+			try {	
+				//Abfrage des gewünschten Geldbetrages und Weitergabe an Funktion "cashout" (Aus alter HA)		
 				System.out.print("Enter the amount to withdraw: ");
 				int amount = Integer.parseInt(br.readLine());
 				cashout(amount);
@@ -25,15 +36,29 @@ public class ATM {
 		}
 	}
 
+	public void accountCheck (int accountNumber) {
+		if (accountNumber == accountCheck) {
+			System.out.println("Hello account " + accountNumber);
+		} else {
+			System.out.println("This account is unknown to us.");
+		}
+	};
+	
 	public void cashout(int amount) {
-		if (amount < accountBalance) {
+		if (amount <= accountBalance) {
 			accountBalance = accountBalance - amount;
 			System.out.println("Ok, here is your money, enjoy!");
-		} else {
+		} 
+		/*Das Nachfolgende funktioniert so nicht... 
+		else if (amount <= atmBalance) {
+			atmBalance = atmBalance - amount;
+			System.out.println("Ok, here is your money, enjoy!");
+			
+		}*/ else {
 			System.out.println("Sorry, not enough money in the bank.");
 		}
 
-	};
+	}
 
 	/**
 	 * Launches the ATM
