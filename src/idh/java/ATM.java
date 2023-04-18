@@ -48,11 +48,17 @@ public class ATM extends Bank {
 				System.out.println("Your current balance is: " + currentAccount.getBalance() + "$");
 				System.out.print("Enter the amount to withdraw: ");
 				String input_amount = br.readLine();
+				
+				if (input_amount.toLowerCase().equals("exit")) {
+					System.out.println("Goodbye!");
+					System.exit(0);
+				}
 				while (!input_amount.matches("[0-9]+")) {
+					System.out.println("wrong input..");
 					this.run2(input_id, br);
 				}
 				int amount = Integer.parseInt(input_amount);
-				if (amount < this.availableMoney) {
+				if (amount <= this.availableMoney) {
 					if (amount <= currentAccount.getBalance()) {
 						currentAccount.setBalance(currentAccount.getBalance() - amount);
 						this.availableMoney -= amount;
