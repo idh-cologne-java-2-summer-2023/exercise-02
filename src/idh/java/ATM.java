@@ -2,45 +2,64 @@ package idh.java;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ATM {
-	int accountBalance = 100;
+	private Map<Integer, Integer> accountBalances; 
+	private int cashBalance; 
 
-	/**
-	 * Main command loop of the ATM Asks the user to enter a number, and passes this
-	 * number to the function cashout(...) which actually does the calculation and
-	 * produces money. If the user enters anything else than an integer number, the
-	 * loop breaks and the program exists
-	 */
+	public ATM() {
+		accountBalances = new HashMap<>();
+		
+		accountBalances.put(1234, 1000);
+		accountBalances.put(5678, 500);
+		cashBalance = 1000; 
+	}
+
 	public void run() {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
 			try {
-				System.out.print("Enter the amount to withdraw: ");
+				System.out.print("Geben sie ihre Kontonummer ein oder 0 um abzubrechen: ");
+				int accountNumber = Integer.parseInt(br.readLine());
+				if (accountNumber == 0) {
+					break; 
+				}
+				System.out.print("Wie viel möchten sie abheben: ");
 				int amount = Integer.parseInt(br.readLine());
-				cashout(amount);
+				cashout(accountNumber, amount);
 			} catch (Exception e) {
-				break;
+				System.out.println("Ungültige eingabe versuchen sie es bitte terneut .");
 			}
 		}
 	}
 
-	public void cashout(int amount) {
-		if (amount < accountBalance) {
-			accountBalance = accountBalance - amount;
-			System.out.println("Ok, here is your money, enjoy!");
+	public void cashout(int accountNumber, int amount) {
+		if (accountBalances.containsKey(accountNumber)) {
+			int accountBalance = accountBalances.get(accountNumber);
+			if (amount <= accountBalance) {
+				if (amount <= cashBalance) {
+					accountBalance -= amount;
+					cashBalance -= amount;
+					accountBalances.put(accountNumber, accountBalance);
+					System.out.println("Kontonummer: " + accountNumber);
+					System.out.println("Abgehobender Betrag : " + amount);
+					System.out.println("Im Konto verblibener betrag : " + accountBalance);
+					System.out.println("viel spaß mit dem Geld .");
+				} else {
+					System.out.println("Es ist nicht genügend bargeld im Automaten vorhaned bitten versuchen sie es später nocheinmal.");
+				}
+			} else {
+				System.out.println("Sie haben nich genügen Geld auf ihrem Konto .");
+			}
 		} else {
-			System.out.println("Sorry, not enough money in the bank.");
+			System.out.println("Ungültige Kontonummer.");
 		}
-
 	};
 
-	/**
-	 * Launches the ATM
-	 */
 	public static void main(String[] args) {
 		ATM atm = new ATM();
 		atm.run();
 	};
-
 }
