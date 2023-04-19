@@ -51,7 +51,7 @@ public class ATM {
 					System.out.println("Es ist nicht genügend bargeld im Automaten vorhaned bitten versuchen sie es später nocheinmal.");
 				}
 			} else {
-				System.out.println("Sie haben nich genügen Geld auf ihrem Konto .");
+				System.out.println("Sie haben nicht genügen Geld auf ihrem Konto .");
 			}
 		} else {
 			System.out.println("Ungültige Kontonummer.");
