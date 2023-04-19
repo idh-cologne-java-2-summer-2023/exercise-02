@@ -2,6 +2,7 @@ package idh.java;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import idh.java.Account;
 
 public class ATM {
 	int accountBalance = 100;
@@ -19,7 +20,9 @@ public class ATM {
 			try {
 				System.out.print("Enter the amount to withdraw: ");
 				int amount = Integer.parseInt(br.readLine());
-				cashout(amount);
+				System.out.print("Enter the account from which to withdraw: ");
+				int account = Integer.parseInt(br.readLine());
+				//account.cashout(amount); Hier soll die Verknüpfung zwischen der Klassse Account stattfinden. 
 			} catch (Exception e) {
 				break;
 			}
