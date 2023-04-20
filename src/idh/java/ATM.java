@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 
 public class ATM {
 	int accountBalance = 100;
+	int amt = 90;
 
 	/**
 	 * Main command loop of the ATM Asks the user to enter a number, and passes this
@@ -16,9 +17,12 @@ public class ATM {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
 			try {
+				System.out.print("Enter your account number: ");
+				Integer.parseInt(br.readLine());
 				System.out.print("Enter the amount to withdraw: ");
 				int amount = Integer.parseInt(br.readLine());
 				cashout(amount);
+				int atm = Integer.parseInt(br.readLine());
 			} catch (Exception e) {
 				break;
 			}
@@ -32,7 +36,10 @@ public class ATM {
 		} else {
 			System.out.println("Sorry, not enough money in the bank.");
 		}
-
+		if (amount < amt) {
+		} else {
+			System.out.println("Sorry, the ATM doesn't have that much cash anymore");
+		}
 	};
 
 	/**
