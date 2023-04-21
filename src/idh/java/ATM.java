@@ -54,7 +54,7 @@ public class ATM {
 				System.out.println("Sie haben nicht genügen Geld auf ihrem Konto .");
 			}
 		} else {
-			System.out.println("Ungültige Kontonummer.");
+			System.out.println("eine Ungültige Kontonummer.");
 		}
 	};
 
