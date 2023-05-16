@@ -52,7 +52,7 @@ public class ATM {
 			System.out.println("Sorry, not enough money in the bank.");
 		}
 		}else {
-			System.out.println("Transaction failed. Invalid account number.");
+			System.out.println("Transaction failed. Invalid account number");
 		}
 		}
 	
@@ -66,3 +66,5 @@ public class ATM {
 	};
 
 }
+
+
